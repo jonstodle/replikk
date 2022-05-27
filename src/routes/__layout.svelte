@@ -1,5 +1,7 @@
 <script lang="ts">
-  import '../app.css'
+  import '../app.css';
 </script>
 
-<slot></slot>
+<main class="w-full max-w-4xl mx-auto">
+  <slot></slot>
+</main>

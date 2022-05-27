@@ -5,7 +5,7 @@ interface State {
 	records: Record<string, string>;
 }
 
-const backingStore = writable<State>({ title: 'text', records: {} });
+const backingStore = writable<State>({ title: 'text', records: { fieldOne: 'one' } });
 const pathContainsValueError = new Error('PathContainsValueError');
 const pathDoesNotExistError = new Error('PathDoesNotExist');
 
@@ -59,7 +59,7 @@ export const documentStore = {
 		const blobUrl = window.URL.createObjectURL(blob);
 		element.style.display = 'none';
 		element.href = blobUrl;
-		element.download = store.title;
+		element.download = !store.title.endsWith('.json') ? `${store.title}.json` : store.title;
 
 		document.body.appendChild(element);
 		element.click();
